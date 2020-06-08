@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[4],{aHM3:function(n,o,s){"use strict";s.d(o,"a",(function(){return t})),s("8Y7J"),s("s7LF");class t{static forRoot(){return{ngModule:t,providers:[]}}}}}]);

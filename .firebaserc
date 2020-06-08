@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "deepcleanerpro": {
+      "hosting": {
+        "deep-cleaner-pro": [
+          "deepcleanerpro"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "deepcleanerpro"
+  }
+}
