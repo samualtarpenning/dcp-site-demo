@@ -1,0 +1,381 @@
+    @import '../../../../../styles/_shared';
+    @import '../../../../../styles/common/color-chooser-input.styles';
+    @import '../../../../../styles/common/size-chooser-input.styles';
+    app-products-listing-page {
+        display: block;
+        min-height: calc(100vh - #{ $navbar-height });
+        padding-bottom: 6rem;
+        at-grid-tile {
+            background: lightblue;
+          }
+        .next {
+            background: #3c9ccc;
+            color: white;
+            padding: 12px;
+            width: 36%;
+            margin-left: 9px;
+            font-size: medium;
+            margin-top: 15px;
+            letter-spacing: 1.5px;
+            transition: .5s all;
+            mat-icon{
+                margin-left: 2%;
+            }
+            &:hover {
+                color: black;
+                background: unset;
+            }
+        }
+        .back {
+            background: white;
+            border-color: #3c9ccc;
+            border-width: medium;
+            color:  #3c9ccc;
+            padding: 12px;
+            width: 34%;
+            margin-left: 9px;
+            font-size: medium;
+            margin-top: 15px;
+            letter-spacing: 1.5px;
+            transition: .5s all;
+            mat-icon{
+                margin-right: 6%;
+            }
+            &:hover {
+                color: black;
+                background: unset;
+            }
+        }
+        mat-vertical-stepper {
+            margin-top: 8px;
+        }
+        .center {
+            margin: auto;
+        }
+        .logo-img {
+            width: 100px;
+            height: 100px;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+        h4{
+          margin-top: 10px;
+        }
+        .booking-summary-image{
+            height: 100px;
+            width: 150px;
+            margin: auto;
+        }
+        mat-checkbox{
+            margin: 10px;
+        }
+        .form-icon {
+            height: 120px;
+            width: 130px;
+            margin-left: 40%;
+            margin: auto;
+        }
+        .mat-form-field {
+            margin-top: 16px;
+        }
+        .store-categories {
+            padding: 2rem 0 0;
+            .store-categories-dropdown {
+                .categories-dropdown-btn {
+                    @include fill-button($white, $aquamarina);
+                    border: none;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    &:focus {
+                        box-shadow: none;
+                    }
+                }
+                .categories-dropdown-menu {
+                    width: 100%;
+                    background: lighten($aquamarina, 5%);
+                    margin: 0px;
+                    border-radius: 0px;
+                    .dropdown-item {
+                        opacity: 0.8;
+                        color: $white;
+                        font-size: 1rem;
+                        font-weight: 500;
+                        letter-spacing: 0.07rem;
+                        &:hover,
+                        &.active {
+                            opacity: 1;
+                            background: transparent;
+                        }
+                    }
+                    .dropdown-divider {
+                        border-color: darken($aquamarina, 10%);
+                    }
+                } // .categories-dropdown-menu
+            } // .store-categories-dropdown
+            .store-highlighted-categories {
+                height: 100%;
+                align-items: center;
+                background: $darkgrey;
+                .nav-item {
+                    .nav-link {
+                        opacity: 0.9;
+                        color: $grey-3;
+                        font-size: 1rem;
+                        font-weight: 500;
+                        letter-spacing: 0.07rem;
+                        &:hover {
+                            opacity: 1;
+                        }
+                    }
+                    &.active {
+                        .nav-link {
+                            opacity: 1;
+                            color: $white;
+                        }
+                    }
+                }
+            } // .store-highlighted-categories
+        } // .store-categories
+        // This heading is only visible below lg viewports
+        .products-listing-heading {
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            .listing-title-wrapper {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                // Line decoration
+                &::before,
+                &::after {
+                    content: '';
+                    background: $black;
+                    height: 2px;
+                    flex: 1 1 auto;
+                }
+                // No left decoration
+                &::before {
+                    content: unset;
+                }
+                .listing-title {
+                    color: $black;
+                    font-size: 1.2rem;
+                    font-weight: 900;
+                    letter-spacing: 0.4rem;
+                    text-align: center;
+                    margin: 0px;
+                    padding: 0px 30px;
+                    // No left decoration
+                    &:first-child {
+                        padding-left: 0px;
+                    }
+                    &[data-listing-length] {
+                        &::after {
+                            content: '(' attr(data-listing-length) ')';
+                            font-size: 0.8rem;
+                            font-weight: 400;
+                            opacity: 0.6;
+                            padding-left: 0.5rem;
+                            vertical-align: middle;
+                        }
+                    }
+                }
+                @include media-breakpoint-down(sm) {
+                    &::before,
+                    &::after {
+                        background: $white;
+                    }
+                    .listing-title {
+                        color: $white;
+                        font-size: 1.6rem;
+                    }
+                }
+            } // .listing-title-wrapper
+            @include media-breakpoint-down(sm) {
+                margin-bottom: 40px;
+                background: $black;
+            }
+        } // .products-listing-heading
+        .products-listing-outer {
+            padding-left: 30px !important;
+            @include media-breakpoint-down(md) {
+                // Below lg viewport the taxonomy sidebar is hidden
+                padding-left: 0px !important;
+            }
+            .products-listing-filters {
+                margin-bottom: 1rem;
+                .products-search-bar {
+                    color: $grey;
+                    border-color: $grey;
+                    background-color: $white;
+                    .search-bar-input {
+                        &:focus {
+                            color: $darkgrey;
+                        }
+                    }
+                } // .products-search-bar
+                .products-sort-filter {
+                    margin-bottom: 0px;
+                    height: 100%;
+                    .sort-label {
+                        padding-right: 1rem;
+                        max-width: fit-content;
+                        color: $grey;
+                    }
+                    .sort-options {
+                        flex-grow: 2;
+                        select.form-control {
+                            height: 100%;
+                            border-width: 2px;
+                            border-color: $grey;
+                            color: $grey;
+                            &:focus {
+                                color: $darkgrey;
+                            }
+                        }
+                    }
+                } // products-sort-filter
+            } // .products-listing-filters
+        } // .products-listing-outer
+        .products-filters-outer {
+            background: rgba($grey-3, 0.4);
+            .products-taxonomy-filters {
+                margin: 0 1rem;
+                .taxonomy-filter-title {
+                    color: $white;
+                    background: #189ccc;
+                    font-size: 0.9rem;
+                    font-weight: 500;
+                    margin-bottom: 1rem;
+                    // Account for parent's (.card) border-left-width (1px) and border-right-width (1px)
+                    margin-left: calc(-1rem - 1px);
+                    margin-right: calc(-1rem - 1px);
+                    padding: 0.5rem 0;
+                    padding-left: calc(1rem + 1px);
+                    padding-right: calc(1rem + 1px);
+                }
+                &> :first-child {
+                    .taxonomy-filter-title {
+                        border-radius: 0.25rem 0.25rem 0 0;
+                    }
+                }
+                .taxonomy-color-filter {
+                    @include color-chooser-input(4);
+                }
+                .taxonomy-size-filter {
+                    @include size-chooser-input(2);
+                    .size-option {
+                        font-size: 0.8rem;
+                    }
+                }
+            }
+        }
+    }
+    .total{
+        color: green
+    }
+    .quoteActions{
+        margin: auto;
+    }
+    .booking-summary-card{
+        width: 95%;
+        margin: auto;
+    }
+    .mat-hint{
+        color: green
+    }
+    // booking steper form scsss
+    .book-header {
+        margin: 40px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        h1 {
+            font-weight: 600;
+            color: #3c9cccb5;
+            font-size: 52px;
+        }
+    }
+    .booking-form {
+
+        width: 100%;
+        mat-vertical-stepper {
+            width: 100%;
+            max-width: 910px;
+            margin: 0 auto !important;
+            .mat-step-icon-selected {
+                background-color: #3c9ccc;
+                padding: 26px;
+                background-image: url('../../../../../../assets//imgs/homee.svg');
+                background-size: cover;
+                border-radius: 7px;
+                box-shadow: 2px 2px 3px 1px rgba(47, 27, 27, 0.55);
+                .mat-step-icon-content {
+                    display: none;
+                }
+            }
+            .mat-step-label-selected {
+                color: rgba(60, 156, 204, 0.84) !important;
+                font-size: 20px;
+            }
+            .mat-step-header {
+                border-radius: 30px;
+            }
+        }
+        .two-input {
+            mat-form-field {
+                width: 100%;
+                max-width: 380px;
+                margin-right: 30px;
+            }
+            .larg-input {
+                width: 100%;
+                max-width: 500px;
+            }
+            .tiny-input {
+                width: 100%;
+                max-width: 220px;
+            }
+            .mid-input {
+                max-width: 250px;
+                width: 100%;
+            }
+            .textarea {
+                max-width: 790px;
+            }
+            .apply {
+                background: #3c9ccc;
+                color: white;
+                padding: 12px 40px;
+                letter-spacing: 1.5px;
+                margin-bottom: 5px;
+                transition: .5s all;
+                &:hover {
+                    color: black;
+                    background: unset;
+                }
+            }
+            .next {
+                background: #3c9ccc;
+                color: white;
+                padding: 9px;
+                width: 30%;
+                font-size: large;
+                margin-top: 15px;
+                letter-spacing: 1.5px;
+                transition: .5s all;
+                mat-icon{
+                    margin-left: 10%;
+                }
+                &:hover {
+                    color: black;
+                    background: unset;
+                }
+            }
+        }
+    }

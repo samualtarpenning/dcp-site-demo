@@ -1,0 +1,179 @@
+<div class="loading" *ngIf="this.loading == true">
+    <app-loading></app-loading>
+</div>
+<div class="" *ngIf="this.loading == false">
+    <section class="storefront-jumbotron">
+        <div class="container-fluid">
+            <div class="jumbotron-highlight row">
+                <div class="col-12">
+                    <h1 class="jumbotron-title">
+                        DEEP CLEANER
+                        <em class="title-emphasis">PRO</em>
+                    </h1>
+                    <mat-card class="quote-card">
+                        <h4 class='quote-card-title'>Get a Free Quote</h4>
+                        <mat-card-content>
+                            <form>
+
+                                <ng-template>CHOOSE YOUR SERVICE</ng-template>
+                                <div class="two-input">
+                                    <mat-divider></mat-divider>
+                                    <img mat-card-image src="../../../../../assets/icon.png" alt="Deep Cleaner Pro icon">
+                                    <mat-form-field appearance="outline" color='$blue'>
+                                        <mat-label>Service type</mat-label>
+                                        <mat-select matNativeControl [formControl]="serviceFormCtrl">
+                                            <mat-option *ngFor='let service of serviceOptions | async' [value]='service'>
+                                                {{service.label}}</mat-option>
+                                        </mat-select>
+                                        <mat-hint *ngIf='serviceFormCtrl.valid'>
+                                            <mat-icon>verified_user
+                                            </mat-icon>
+                                            Looks Good!
+                                        </mat-hint>
+                                        <mat-error *ngIf="serviceFormCtrl.hasError('required')">
+                                            Service type is <strong>required</strong>
+                                        </mat-error>
+                                    </mat-form-field>
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Service Size</mat-label>
+                                        <mat-select matNativeControl [formControl]="serviceSizeFormCtrl">
+                                            <mat-option value='500 - 900'>500 - 900 sq/ft</mat-option>
+                                            <mat-option value='999 - 1,499'>999 - 1499 sq/ft</mat-option>
+                                            <mat-option value='1,500 - 1,999'>1,500 - 1,999 sq/ft</mat-option>
+                                            <mat-option value='2,000 - 2,499'>2,000 - 2,499 sq/ft</mat-option>
+                                            <mat-option value='2,500 - 2,999'>2,500 - 2,999 sq/ft</mat-option>
+                                            <mat-option value='3,000 - 3,499'>3,000 - 3,499 sq/ft</mat-option>
+                                            <mat-option value='3,500 - 3,999'>3,000 - 3,499 sq/ft</mat-option>
+                                            <mat-option value='4,000 - 4,999'>4,000 - 4,999 sq/ft</mat-option>
+                                            <mat-option value='5,000 - 5,999'>5,000 - 5,999 sq/ft</mat-option>
+                                            <mat-option value='6,000 - 6,999'>6,000 - 6,999 sq/ft</mat-option>
+                                            <mat-option value='7,000 - 7,999'>7,000 - 7,999 sq/ft</mat-option>
+                                            <mat-option value='8,000 - 8,999'>8,000 - 8,999 sq/ft</mat-option>
+
+                                        </mat-select>
+                                        <mat-hint *ngIf='serviceSizeFormCtrl.valid'>
+                                            <mat-icon>verified_user
+                                            </mat-icon>
+                                            Looks Good!
+                                        </mat-hint>
+                                        <mat-error *ngIf="serviceSizeFormCtrl.hasError('required')">
+                                            Service type is <strong>required</strong>
+                                        </mat-error>
+                                    </mat-form-field>
+                                    <mat-checkbox [formControl]="recurringServiceFormCtrl">
+                                        Recurring Service
+                                    </mat-checkbox> <br>
+                                    <button *ngIf='quote' class="btn" mat-flat-button (click)='getQuote()'>New Quote
+                  </button>
+                                    <mat-divider></mat-divider>
+
+
+                                </div>
+                            </form>
+                            <mat-divider></mat-divider>
+                            <mat-list *ngIf='quote'>
+                                <div mat-subheader>Quote Summary</div>
+                                <mat-list-item>
+
+                                    <mat-icon mat-list-icon>home</mat-icon>
+                                    <div mat-line><strong>Service Type</strong></div>
+                                    <div mat-line>{{serviceFormCtrl.value.label}}
+                                    </div>
+                                    <div mat-line> {{serviceSizeFormCtrl.value}} sq/ft
+                                    </div>
+                                </mat-list-item>
+                                <mat-list-item>
+                                    <mat-icon mat-list-icon>loop</mat-icon>
+                                    <div mat-line><strong>Recurring</strong></div>
+                                    <div *ngIf="recurringServiceFormCtrl.value == false" mat-line>NO</div>
+                                    <div *ngIf="recurringServiceFormCtrl.value == true" mat-line>YES</div>
+                                </mat-list-item>
+                                <mat-list-item>
+                                    <h4 class="total">{{quote | currency}}</h4>
+                                    <div mat-line>
+                                        <h4>Total:</h4>
+                                    </div>
+                                </mat-list-item>
+                                <mat-divider></mat-divider>
+
+                            </mat-list>
+                            <mat-divider></mat-divider>
+                        </mat-card-content>
+                        <mat-card-actions>
+                            <div class="center">
+                                <button *ngIf='!quote' class="btn" mat-flat-button (click)='getQuote()'>Get
+                  Free Quote
+                </button>
+                            </div>
+
+                            <div *ngIf='quote'>
+                                <a [routerLink]="['/products']">
+                                    <button mat-flat-button type="button" class="btn">
+                    Book Now
+                  </button>
+                                </a>
+                            </div>
+
+                        </mat-card-actions>
+                    </mat-card>
+
+                </div>
+                <div class="col-12">
+                    <div class="slogan-wrapper">
+                        <h3 class="slogan-copy">
+                            Your professional deep cleaning solution
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Deep Cleaner Pro Products -->
+    <div class="container">
+        <div class="row storefront-categories">
+            <div class="col-12 col-lg-6 store-main-category-col">
+                <app-background-image class="store-main-category women-category" [src]="'/assets/imgs/home/cleanHome.jpg'">
+                    <app-fill-container [ratio]="{ w: 4, h: 3 }">
+                        <a class="main-category-anchor" [routerLink]="['/products']">
+                            <button type="button" class="btn main-category-btn">
+                Book Now
+              </button>
+                        </a>
+                    </app-fill-container>
+                </app-background-image>
+            </div>
+            <div class="col-12 col-lg-6 store-main-category-col">
+                <app-background-image class="store-main-category men-category" [src]="'/assets/imgs/home/background-splash.jpg'">
+                    <app-fill-container [ratio]="{ w: 4, h: 3 }">
+                        <a class="main-category-anchor" [routerLink]="['/products']">
+                            <button type="button" class="btn main-category-btn">
+                Get a Free Quote
+              </button>
+                        </a>
+                    </app-fill-container>
+                </app-background-image>
+            </div>
+            <div class="col-12 col-lg-6 store-main-category-col">
+                <app-background-image class="store-main-category men-category" [src]="'/assets/imgs/home/home-background.jpg'">
+                    <app-fill-container [ratio]="{ w: 4, h: 3 }">
+                        <a class="main-category-anchor" [routerLink]="['/products']">
+                            <button type="button" class="btn main-category-btn">
+                Become a Member
+              </button>
+                        </a>
+                    </app-fill-container>
+                </app-background-image>
+            </div>
+            <div class="col-12 col-lg-6 store-main-category-col">
+                <app-background-image class="store-main-category men-category" [src]="'/assets/imgs/home/officeCleaning.jpg'">
+                    <app-fill-container [ratio]="{ w: 4, h: 3 }">
+                        <a class="main-category-anchor" [routerLink]="['/products']">
+                            <button type="button" class="btn main-category-btn">
+                We Are Hiring!
+              </button>
+                        </a>
+                    </app-fill-container>
+                </app-background-image>
+            </div>
+        </div>
