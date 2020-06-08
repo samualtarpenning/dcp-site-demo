@@ -1,9 +1,5 @@
 # Hi!
-Thanks for buying Angular Site Template.
-
-If you have any question please don't hesitate to contact us at: contact@angular-templates.io
-
-The project documentation is in: https://site-template-doc.angular-templates.io/
+Thanks for taking the time to review my code. This is for demo purposes only.
 
 ## How to run this project
 
@@ -12,10 +8,6 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ## Build
 
